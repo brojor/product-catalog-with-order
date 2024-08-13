@@ -8,7 +8,7 @@
 				<span class="font-semibold">{{ formatPrice(item.product.price * item.quantity) }}</span>
 			</p>
 		</div>
-		<button class="text-zinc-400" @click="cartStore.removeFromCart(item.product.id)">
+		<button class="text-zinc-400 hover:text-zinc-800" @click="cartStore.removeFromCart(item.product.id)">
 			<IconsRemoveItem />
 		</button>
 	</li>
