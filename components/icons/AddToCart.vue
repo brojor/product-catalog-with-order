@@ -14,5 +14,5 @@
 </template>
 
 <script setup lang="ts">
-const uniqueId = `clip-path-${Math.random().toString(36).slice(2)}`
+const uniqueId = useId()
 </script>
