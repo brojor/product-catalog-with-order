@@ -7,7 +7,9 @@
           <ProductItem v-for="product in data" :key="product.id" :product="product" />
         </div>
       </main>
-      <aside class="border border-green-500 w-full md:w-1/2 lg:w-[24rem] mx-auto shrink-0"></aside>
+      <aside class="border border-green-500 w-full md:w-1/2 lg:w-[24rem] mx-auto shrink-0">
+        <ACart />
+      </aside>
     </div>
   <!-- </div> -->
 </template>
