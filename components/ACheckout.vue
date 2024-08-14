@@ -2,6 +2,8 @@
 	<h2 class="text-xl sm:text-3xl font-bold mb-6">Shipping and payment</h2>
 	<form @submit.prevent="submitForm">
 
+		<ShippingInfo />
+		<hr class="my-6">
 		<PersonalInfo ref="personalInfo" />
 
 		<button type="submit"

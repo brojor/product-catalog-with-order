@@ -1,4 +1,5 @@
 <template>
+	<h3 class="my-4 font-semibold">Personal Info:</h3>
 	<div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
 		<div v-for="input in formInputs" :key="input.id">
 			<label :for="input.id" class="font-semibold text-zinc-500">{{ input.label }}</label>
