@@ -26,10 +26,11 @@ export function useValidation(inputData: Ref<FormSchema>) {
 		const result = formSchema.safeParse(inputData.value)
 		if (!result.success) {
 			errors.value = result.error.format()
-			return
+			return errors.value
 		}
 		errors.value = null
+		return null
 	}
 
-	return { inputData, errors, validateForm }
+	return { errors, validateForm }
 }
