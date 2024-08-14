@@ -18,6 +18,13 @@ const paymentMethods = [
 	{ id: 'cod', name: 'Cash on Delivery', price: 1.75 },
 ] as const
 
+const servicesStore = useServicesStore()
+
 const selectedMethod = ref<typeof paymentMethods[number]['id']>('card')
+
+watch(selectedMethod, (newVal) => {
+	const paymentMethod = paymentMethods.find(method => method.id === newVal)!
+	servicesStore.setPaymentMethod(paymentMethod)
+}, { immediate: true })
 
 </script>
