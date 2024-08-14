@@ -19,9 +19,14 @@
 <script setup lang="ts">
 import PersonalInfo from './PersonalInfo.vue';
 
+const emit = defineEmits(['sendOrder'])
+
 const personalInfo = ref<typeof PersonalInfo | null>(null)
 
 const submitForm = () => {
 	const errors = personalInfo.value?.validateForm()
+	if(!errors) {
+		emit('sendOrder')
+	}
 }
 </script>

@@ -11,7 +11,8 @@
     </aside>
   </div>
   <ModalWindow  v-if="isModalOpen">
-   <ACheckout/>
+   <ACheckout v-if="!isOrderSended" @send-order="isOrderSended = true" />
+   <ASummary v-else />
   </ModalWindow>
 </template>
 
@@ -21,6 +22,7 @@ import ACheckout from './components/ACheckout.vue';
 const { data } = await useFetch('/api/products')
 
 const isModalOpen = ref(false)
+const isOrderSended = ref(false)
 const openModal = () => {
   isModalOpen.value = true
 }
