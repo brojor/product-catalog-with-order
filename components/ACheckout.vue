@@ -4,11 +4,13 @@
 
 		<ShippingInfo />
 		<hr class="my-6">
+		<PaymentInfo />
+		<hr class="my-6">
 		<PersonalInfo ref="personalInfo" />
 
 		<button type="submit"
 			class="block bg-red-700 text-white py-4 w-full sm:w-1/2 rounded-full hover:bg-red-800 mt-8 mx-auto">
-			Confirm Order
+			Send Order
 		</button>
 	</form>
 </template>
