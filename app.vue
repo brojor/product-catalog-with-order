@@ -1,19 +1,29 @@
 <template>
-    <div class="max-w-6xl w-full mx-auto p-6 md:p-8 flex flex-col lg:flex-row gap-8">
-      <main>
-        <h1 class="text-4xl font-bold mb-4">Desserts</h1>
-        <div class="grid sm:grid-cols-2 gap-6">
-          <ProductItem v-for="product in data" :key="product.id" :product="product" />
-        </div>
-      </main>
-      <aside class="w-full md:w-1/2 lg:w-[24rem] mx-auto shrink-0">
-        <ACart />
-      </aside>
-    </div>
+  <div class="max-w-6xl w-full mx-auto p-6 md:p-8 flex flex-col lg:flex-row gap-8">
+    <main>
+      <h1 class="text-4xl font-bold mb-4">Desserts</h1>
+      <div class="grid sm:grid-cols-2 gap-6">
+        <ProductItem v-for="product in data" :key="product.id" :product="product" />
+      </div>
+    </main>
+    <aside class="w-full md:w-1/2 lg:w-[24rem] mx-auto shrink-0">
+      <ACart @submit="openModal" />
+    </aside>
+  </div>
+  <ModalWindow  v-if="isModalOpen">
+   <ACheckout/>
+  </ModalWindow>
 </template>
 
 <script setup lang="ts">
+import ACheckout from './components/ACheckout.vue';
+
 const { data } = await useFetch('/api/products')
+
+const isModalOpen = ref(false)
+const openModal = () => {
+  isModalOpen.value = true
+}
 </script>
 
 <style>
