@@ -3,18 +3,8 @@
 	<p class="text-slate-500 my-2">We hope you enjoy your food</p>
 	<div class="mt-4 bg-red-100/30 p-6 rounded">
 		<ul>
-			<li v-for="cartItem in cartStore.$state.items" :key="cartItem.product.id"
-				class="flex gap-4 pb-4 mb-4 border-b border-slate-300">
-				<img :src="`/images/${cartItem.product.imgName}-thumbnail.jpg`" :alt="cartItem.product.name"
-					class="w-12 h-12 rounded">
-				<div class="text-xs">
-					<h3 class="text-sm font-semibold mb-3">{{ cartItem.product.name }}</h3>
-					<span class="text-red-700 font-semibold">{{ cartItem.quantity }}x</span>
-					<span class="ml-4 text-slate-500">@ {{ formatPrice(cartItem.product.price) }}</span>
-				</div>
-				<span class="ml-auto self-center font-semibold">{{ formatPrice(cartItem.product.price * cartItem.quantity)
-					}}</span>
-			</li>
+			<SummaryItem v-for="cartItem in cartStore.$state.items" :key="cartItem.product.id" :product="cartItem.product"
+				:quantity="cartItem.quantity" />
 			<li class="flex font-semibold pb-4 mb-4 border-b border-slate-300">
 				<span class="text-sm mr-2 text-slate-500">Payment:</span>
 				<span class="text-sm ">{{ servicesStore.$state.paymentMethod!.name }}</span>
@@ -32,7 +22,7 @@
 		</div>
 	</div>
 	<button class="block bg-red-700 text-white py-4 w-full sm:w-1/2 rounded-full hover:bg-red-800 mt-8 mx-auto"
-	@click="startNewOrder">
+		@click="startNewOrder">
 		Start new order
 	</button>
 </template>
