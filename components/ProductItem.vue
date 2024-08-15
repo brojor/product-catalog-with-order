@@ -2,7 +2,8 @@
 	<div class="flex flex-col mb-2">
 		<picture>
 			<source media="(min-width: 640px)" :srcset="`/images/${product.imgName}-desktop.jpg`">
-			<img :src="`/images/${product.imgName}-mobile.jpg`" :alt="product.name" class="rounded-xl" :class="{'ring-2 ring-red-700': isActive}">
+			<img :src="`/images/${product.imgName}-mobile.jpg`" :alt="product.name" class="rounded-xl"
+				:class="{ 'ring-2 ring-red-700': isActive }">
 		</picture>
 		<AddToCartButton :product="product" :isActive="isActive" />
 		<p class="text-zinc-500 text-sm mt-1">{{ product.category }}</p>

@@ -25,7 +25,7 @@ const personalInfo = ref<typeof PersonalInfo | null>(null)
 
 const submitForm = () => {
 	const errors = personalInfo.value?.validateForm()
-	if(!errors) {
+	if (!errors) {
 		emit('sendOrder')
 	}
 }
