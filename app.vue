@@ -10,7 +10,7 @@
       <ACart @submit="openModal" />
     </aside>
   </div>
-  <ModalWindow v-if="isModalOpen">
+  <ModalWindow v-if="isModalOpen" @close="closeModal">
     <ACheckout v-if="!isOrderSended" @send-order="showSummary" />
     <ASummary v-else @submit="startNewOrder" />
   </ModalWindow>
@@ -19,11 +19,21 @@
 <script setup lang="ts">
 const { data } = await useFetch('/api/products')
 
+const cartStore = useCartStore()
+const servicesStore = useServicesStore()
+
 const isModalOpen = ref(false)
 const isOrderSended = ref(false)
 
 const openModal = () => {
   isModalOpen.value = true
+}
+
+const closeModal = () => {
+  if(isOrderSended.value) {
+    startNewOrder()
+  }
+  isModalOpen.value = false
 }
 
 const showSummary = () => {
@@ -33,6 +43,8 @@ const showSummary = () => {
 const startNewOrder = () => {
   isOrderSended.value = false
   isModalOpen.value = false
+  cartStore.clearCart()
+	servicesStore.reset()
 }
 </script>
 

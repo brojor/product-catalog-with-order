@@ -22,13 +22,13 @@
 		</div>
 	</div>
 	<button class="block bg-red-700 text-white py-4 w-full sm:w-1/2 rounded-full hover:bg-red-800 mt-8 mx-auto"
-		@click="startNewOrder">
+		@click="$emit('submit')">
 		Start new order
 	</button>
 </template>
 
 <script setup lang="ts">
-const emit = defineEmits(['submit'])
+defineEmits(['submit'])
 
 const cartStore = useCartStore()
 const servicesStore = useServicesStore()
@@ -36,10 +36,4 @@ const servicesStore = useServicesStore()
 const totalPrice = computed(() => {
 	return cartStore.totalPrice + servicesStore.totalPrice
 })
-
-const startNewOrder = () => {
-	cartStore.clearCart()
-	servicesStore.reset()
-	emit('submit')
-}
 </script>
