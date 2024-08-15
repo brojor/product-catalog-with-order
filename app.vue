@@ -10,15 +10,13 @@
       <ACart @submit="openModal" />
     </aside>
   </div>
-  <ModalWindow  v-if="isModalOpen">
-   <ACheckout v-if="!isOrderSended" @send-order="showSummary"/>
-   <ASummary v-else @submit="startNewOrder"/>
+  <ModalWindow v-if="isModalOpen">
+    <ACheckout v-if="!isOrderSended" @send-order="showSummary" />
+    <ASummary v-else @submit="startNewOrder" />
   </ModalWindow>
 </template>
 
 <script setup lang="ts">
-import ACheckout from './components/ACheckout.vue';
-
 const { data } = await useFetch('/api/products')
 
 const isModalOpen = ref(false)
