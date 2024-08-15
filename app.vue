@@ -11,8 +11,8 @@
     </aside>
   </div>
   <ModalWindow  v-if="isModalOpen">
-   <ACheckout v-if="!isOrderSended" @send-order="isOrderSended = true" />
-   <ASummary v-else />
+   <ACheckout v-if="!isOrderSended" @send-order="showSummary"/>
+   <ASummary v-else @submit="startNewOrder"/>
   </ModalWindow>
 </template>
 
@@ -23,8 +23,18 @@ const { data } = await useFetch('/api/products')
 
 const isModalOpen = ref(false)
 const isOrderSended = ref(false)
+
 const openModal = () => {
   isModalOpen.value = true
+}
+
+const showSummary = () => {
+  isOrderSended.value = true
+}
+
+const startNewOrder = () => {
+  isOrderSended.value = false
+  isModalOpen.value = false
 }
 </script>
 

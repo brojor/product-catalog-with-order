@@ -14,6 +14,11 @@ export const useServicesStore = defineStore('services', {
 		setShippingMethod(service: Service) {
 			this.shippingMethod = service
 		},
+
+		reset() {
+			this.paymentMethod = null
+			this.shippingMethod = null
+		},
 	},
 
 	getters: {
